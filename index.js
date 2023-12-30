@@ -83,14 +83,14 @@ app.post("/api/add", upload, async (req, res) => {
       // maxAge: 3000
     };
     //if we use render alert not show use only below
-    res.redirect("/");
+    res.redirect("/api/");
   } catch (error) {
     console.log(error);
   }
 });
 
 //display data on screen
-app.get("/", async (req, res) => {
+app.get("/api/", async (req, res) => {
   try {
     //search
 
@@ -170,7 +170,7 @@ app.post("/api/update/:id", upload, async (req, res) => {
       type: "success",
       message: "User Updated successfully",
     };
-    res.redirect("/");
+    res.redirect("/api/");
   } catch (error) {
     console.log(error);
   }
@@ -191,7 +191,7 @@ app.get("/api/delete/:id", async (req, res) => {
       type: "info",
       message: "User Deleted successfully",
     };
-    res.redirect("/");
+    res.redirect("/api/");
     // }
   } catch (error) {
     console.log(error);
