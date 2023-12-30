@@ -92,43 +92,10 @@ app.post("/api/add", upload, async (req, res) => {
 //display data on screen
 app.get("/api/home", async (req, res) => {
   try {
-    //search
-
-    // var search=" "
-    // if(req.query.search) {
-    //   search=req.query.search
-    // }
-    //Pagination
-    // var page=1
-    // if(req.query.page) {
-    //   page=req.query.page
-    //   }
-
-    //  const limit=3;
-
-    // search=req.query.search || ""
-    // const useSearch=await User.find({$or:[
-    //   {name:{$regex:".*"+search+".*",$options:"i"}},
-    //   {email:{$regex:".*"+search+".*",$options:"i"}},
-    //   {phone:{$regex:".*"+search+".*",$options:"i"}}
-    // ]})
-    // .limit(limit * 1).skip((page-1)*limit).exec()
-
-    // const count=await User.find({$or:[
-    //   {name:{$regex:".*"+search+".*",$options:"i"}},
-    //   {email:{$regex:".*"+search+".*",$options:"i"}},
-    //   {phone:{$regex:".*"+search+".*",$options:"i"}}
-    // ]}).countDocuments();
-
     const users = await User.find();
-
     res.render("homess", {
       users: users,
     });
-    // totalpages:Math.ceil(count/limit),
-    // currentPage:page,
-    // next:page+1,
-    // previous:page-1,
   } catch (error) {
     console.log(error);
   }
