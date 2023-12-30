@@ -40,10 +40,10 @@ app.use((req, res, next) => {
 });
 app.use(express.static("uploads"));
 
-app.get("/contact", (req, res) => {
+app.get("/api/contact", (req, res) => {
   res.render("contact");
 });
-app.get("/about", (req, res) => {
+app.get("/api/about", (req, res) => {
   res.render("about");
 });
 
@@ -61,11 +61,11 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage }).single("image");
 //create a user
 
-app.get("/add", (req, res) => {
+app.get("/api/add", (req, res) => {
   res.render("add");
 });
 
-app.post("/add", upload, async (req, res) => {
+app.post("/api/add", upload, async (req, res) => {
   try {
     const email = req.body.email;
     const Register = new User({
@@ -135,7 +135,7 @@ app.get("/", async (req, res) => {
 });
 
 //edit a user
-app.get("/edit/:id", async (req, res) => {
+app.get("/api/edit/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const user = await User.findById({ _id: id });
@@ -147,7 +147,7 @@ app.get("/edit/:id", async (req, res) => {
 });
 
 // update
-app.post("/update/:id", upload, async (req, res) => {
+app.post("/api/update/:id", upload, async (req, res) => {
   try {
     const id = req.params.id;
     let new_image = " ";
@@ -177,7 +177,7 @@ app.post("/update/:id", upload, async (req, res) => {
 });
 
 //delete photo
-app.get("/delete/:id", async (req, res) => {
+app.get("/api/delete/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const Deletef = await User.deleteOne({ _id: id });
